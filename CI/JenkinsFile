@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages{
+    stage('Newman Tests API') {
+        steps {
+            sh '''
+            cd API/newman
+            newman run EXAMEN.postman_collection.json 
+            '''
+              }
+     }
+       stage('JMeter Tests') {
+        steps {
+            sh '''
+            ls
+            export PATH=/home/pjcalvov/jmeter/apache-jmeter-5.3/bin:$PATH
+            cd LOAD
+            jmeter -n -t JMTERCICD.jmx
+            '''
+        }
+      }
+      stage('RestAssured') {
+      steps {
+          sh '''
+          cd API/restAssured
+          mvn clean test
+          '''
+            } 
+            
+      }
+
+    }
+  }
+
+
+
+    
