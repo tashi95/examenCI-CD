@@ -7,22 +7,87 @@
 	"item": [
 		{
 			"name": "status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9519e48f-5d35-4db9-afe1-9e4943bfb216",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Listos para el examen\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "https://api-coffee-testing.herokuapp.com/v1/examen/status",
+					"protocol": "https",
+					"host": [
+						"api-coffee-testing",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"examen",
+						"status"
+					]
 				}
 			},
 			"response": []
 		},
 		{
 			"name": "randomName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1443d335-c653-4325-98bd-2ca97dc7456d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "testpass",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testuser",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "https://api-coffee-testing.herokuapp.com/v1/examen/randomName",
+					"protocol": "https",
+					"host": [
+						"api-coffee-testing",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"examen",
+						"randomName"
+					]
 				}
 			},
 			"response": []
