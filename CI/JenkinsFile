@@ -4,7 +4,7 @@ pipeline {
     stage('Newman Tests API') {
         steps {
             sh '''
-            cd API/newman
+            cd API/Newman
             newman run EXAMEN.postman_collection.json 
             '''
               }
